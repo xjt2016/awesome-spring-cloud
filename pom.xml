@@ -12,6 +12,7 @@
         <module>awesome-cloud-eureka-client</module>
         <module>awesome-cloud-ribbon</module>
         <module>awesome-cloud-feign</module>
+        <module>awesome-cloud-hystrix</module>
     </modules>
 
     <name>awesome-spring-cloud</name>

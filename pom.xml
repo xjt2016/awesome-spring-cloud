@@ -5,7 +5,12 @@
 
     <groupId>io.gitee.xjt2016</groupId>
     <artifactId>awesome-spring-cloud</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>awesome-cloud-eureka-server</module>
+        <module>awesome-cloud-eureka-client</module>
+    </modules>
 
     <name>awesome-spring-cloud</name>
     <url>http://xjt2016.top/</url>
@@ -15,6 +20,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
+        <springcloud-version>Hoxton.RELEASE</springcloud-version>
     </properties>
 
     <dependencies>
@@ -62,6 +68,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <!--springcloud依赖-->
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

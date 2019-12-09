@@ -13,6 +13,8 @@
         <module>awesome-cloud-ribbon</module>
         <module>awesome-cloud-feign</module>
         <module>awesome-cloud-hystrix</module>
+        <module>awesome-cloud-zuul</module>
+        <module>awesome-cloud-gateway</module>
     </modules>
 
     <name>awesome-spring-cloud</name>

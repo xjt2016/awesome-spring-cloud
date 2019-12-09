@@ -10,6 +10,8 @@
     <modules>
         <module>awesome-cloud-eureka-server</module>
         <module>awesome-cloud-eureka-client</module>
+        <module>awesome-cloud-ribbon</module>
+        <module>awesome-cloud-feign</module>
     </modules>
 
     <name>awesome-spring-cloud</name>
@@ -37,11 +39,6 @@
             <artifactId>mockito-core</artifactId>
             <version>3.1.0</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>

@@ -15,6 +15,7 @@
         <module>awesome-cloud-hystrix</module>
         <module>awesome-cloud-zuul</module>
         <module>awesome-cloud-gateway</module>
+        <module>awesome-cloud-config-client</module>
     </modules>
 
     <name>awesome-spring-cloud</name>

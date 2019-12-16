@@ -1,8 +1,12 @@
 spring:
   application:
     name: service-ribbon
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 1000MB
 server:
-  port: 8764
+  port: 8766
 eureka:
   client:
     serviceUrl:

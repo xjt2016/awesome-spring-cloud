@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-public class HelloControler {
+public class HelloController {
 
     @Resource
     HelloService helloService;

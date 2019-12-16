@@ -40,6 +40,7 @@ public class MyFilter extends ZuulFilter {
             try {
                 ctx.getResponse().getWriter().write("token is empty");
             } catch (Exception e) {
+                log.error(e.getMessage(), e);
             }
 
             return null;

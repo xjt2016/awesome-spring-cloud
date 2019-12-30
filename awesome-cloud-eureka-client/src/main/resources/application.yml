@@ -1,11 +1,12 @@
 spring:
   application:
-    name: service-hi
+    name: awesome-cloud-eureka-client
 server:
   port: 8762
+
 eureka:
-  instance:
-    hostname: 127.0.0.1
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+      defaultZone: http://192.168.51.100:8000/eureka/
+  instance:
+    prefer-ip-address: true

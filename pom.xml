@@ -17,6 +17,7 @@
         <module>awesome-cloud-gateway</module>
         <module>awesome-cloud-config-client</module>
         <module>awesome-cloud-sleuth</module>
+        <module>awesome-cloud-zipkin</module>
     </modules>
 
     <name>awesome-spring-cloud</name>
@@ -96,9 +97,14 @@
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-feign</artifactId>
+                <version>1.4.7.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-sleuth</artifactId>
                 <version>2.2.0.RELEASE</version>
-                <!--spring-cloud-sleuth.version-->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -118,7 +124,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
 
     <build>

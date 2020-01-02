@@ -22,6 +22,9 @@ public interface FeignServiceHi {
     String hi3(HiParam hiParam);
 
     @PostMapping(value = "/hi")
+    String hi3(@RequestParam(value = "hiParam") HiParam hiParam, @RequestParam(value = "hiParam2") HiParam param2);
+
+    @PostMapping(value = "/hi")
     String hi3Post(HiParam hiParam);
 
     @PostMapping(value = "/hi")

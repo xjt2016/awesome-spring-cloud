@@ -41,8 +41,14 @@ public class ServiceFeignApplicationTest {
     }
 
     @Test
-    public void test003() throws Exception {
+    public void testhi3() throws Exception {
         String result = (feignServiceHi.hi3(new HiParam("xjt2016")));
+        log.info(result);
+    }
+
+    @Test
+    public void testhi32() throws Exception {
+        String result = (feignServiceHi.hi3(new HiParam("xjt2016"), new HiParam("xjt2017")));
         log.info(result);
     }
 
@@ -54,7 +60,7 @@ public class ServiceFeignApplicationTest {
 
     @Test
     public void hi3Post2() throws Exception {
-        String result = feignServiceHi.hi3Post(new HiParam("xjt2016","alaasas"), "alias2016");
+        String result = feignServiceHi.hi3Post(new HiParam("xjt2016", "alaasas"), "alias2016");
         log.info(result);
     }
 }

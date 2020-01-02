@@ -8,14 +8,30 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>awesome-cloud-eureka-server</artifactId>
+    <artifactId>awesome-cloud-sleuth</artifactId>
 
-    <name>awesome-cloud-eureka-server</name>
+    <name>awesome-cloud-sleuth</name>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+            <version>2.0.0.RELEASE</version>
         </dependency>
     </dependencies>
 

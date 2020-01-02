@@ -9,6 +9,7 @@ public class CommandHelloWorld extends HystrixCommand<String> {
     public CommandHelloWorld(String name) {
         super(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"));
         this.name = name;
+        System.out.println("CommandHelloWorld Construct");
     }
 
     @Override

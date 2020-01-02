@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Log4j2
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,7 +20,41 @@ public class ServiceFeignApplicationTest {
 
     @Test
     public void test001() throws Exception {
-        String result = (feignServiceHi.sayHiFromClientOne("xjt2016"));
+        String result = (feignServiceHi.hi("xjt2016"));
+        log.info(result);
+    }
+
+    @Test
+    public void test002() throws Exception {
+        Map<String, Object> param = new HashMap<>();
+        param.put("name", "xjt2016");
+        String result = (feignServiceHi.hi2(param));
+        log.info(result);
+    }
+
+    @Test
+    public void testhi2Post() throws Exception {
+        Map<String, Object> param = new HashMap<>();
+        param.put("name", "xjt2016");
+        String result = (feignServiceHi.hi2Post(param));
+        log.info(result);
+    }
+
+    @Test
+    public void test003() throws Exception {
+        String result = (feignServiceHi.hi3(new HiParam("xjt2016")));
+        log.info(result);
+    }
+
+    @Test
+    public void hi3Post() throws Exception {
+        String result = feignServiceHi.hi3Post(new HiParam("xjt2016"));
+        log.info(result);
+    }
+
+    @Test
+    public void hi3Post2() throws Exception {
+        String result = feignServiceHi.hi3Post(new HiParam("xjt2016","alaasas"), "alias2016");
         log.info(result);
     }
 }

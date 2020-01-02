@@ -18,14 +18,6 @@ public class Response<T> implements Serializable {
         this.data = data;
     }
 
-    public Response(T data) {
-        this.data = data;
-    }
-
-    public Response(String message) {
-        this.message = message;
-    }
-
     public Response() {
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(value = "awesome-cloud-zipkin")
+@FeignClient(value = "awesome-cloud-zipkin-client")
 public interface FeignServiceHi {
     @GetMapping(value = "/hi")
     String hi(@RequestParam(value = "name") String name);

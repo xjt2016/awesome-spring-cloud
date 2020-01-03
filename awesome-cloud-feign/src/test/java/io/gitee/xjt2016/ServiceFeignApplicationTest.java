@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
@@ -62,5 +63,25 @@ public class ServiceFeignApplicationTest {
     public void hi3Post2() throws Exception {
         String result = feignServiceHi.hi3Post(new HiParam("xjt2016", "alaasas"), "alias2016");
         log.info(result);
+    }
+
+
+    @Resource
+    FeignServiceHi2 feignServiceHi2;
+
+    @Test
+    public void testRibbonQuestion() throws Exception {
+        log.info(feignServiceHi.hi("123"));
+        log.info(feignServiceHi2.hi("123"));
+        log.info(feignServiceHi.hi("123"));
+        log.info(feignServiceHi2.hi("123"));
+    }
+
+    @Resource
+    DiscoveryClient discoveryClient;
+
+    @Test
+    public void testEurekaClient() throws Exception {
+        discoveryClient.getServices().forEach(log::info);
     }
 }

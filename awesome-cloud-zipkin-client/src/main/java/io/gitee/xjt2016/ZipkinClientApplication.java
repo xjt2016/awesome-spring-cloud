@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ZipkinClientApplication {
 
+    @Value("${server.port}")
+    String port;
+
     public static void main(String[] args) {
         SpringApplication.run(ZipkinClientApplication.class, args);
     }
-
-    @Value("${server.port}")
-    String port;
 
     @RequestMapping("/hi")
     public String home(@RequestParam(value = "name", defaultValue = "forezp") String name) {

@@ -17,7 +17,7 @@
         <module>awesome-cloud-gateway</module>
         <module>awesome-cloud-config-client</module>
         <module>awesome-cloud-sleuth</module>
-        <module>awesome-cloud-zipkin</module>
+        <module>awesome-cloud-zipkin-client</module>
     </modules>
 
     <name>awesome-spring-cloud</name>

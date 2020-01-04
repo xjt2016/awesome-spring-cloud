@@ -12,7 +12,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 @Log4j2
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,5 +45,20 @@ public class ServiceRibbonApplicationTest {
             log.info(JSON.toJSONString(server));
         }
 
+    }
+
+    @Test
+    public void getBean() throws Exception {
+        Arrays.stream(ctx.getBeanDefinitionNames()).filter(new Predicate<String>() {
+            @Override
+            public boolean test(String s) {
+                return s.contains("eureka");
+            }
+        }).forEach(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        });
     }
 }

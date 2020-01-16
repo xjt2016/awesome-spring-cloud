@@ -1,6 +1,6 @@
 spring:
   application:
-    name: awesome-cloud-eureka-client
+    name: awesome-cloud-eureka-client3
 server:
   port: 8762
 

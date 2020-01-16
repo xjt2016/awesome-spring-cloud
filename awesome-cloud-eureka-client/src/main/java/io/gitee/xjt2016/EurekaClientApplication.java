@@ -23,7 +23,7 @@ public class EurekaClientApplication {
     @Value("${server.port}")
     String port;
 
-    @RequestMapping("/hi")
+    @RequestMapping("/base/hi")
     public Response home(@RequestParam(value = "name", defaultValue = "forezp") String name, Integer age, String alias) {
         Map<String, String> data = new HashMap<>();
         data.put("message", "hi " + name + " ,i am from port:" + port);

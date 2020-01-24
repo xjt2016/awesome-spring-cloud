@@ -65,6 +65,20 @@ public class ServiceFeignApplicationTest {
         log.info(result);
     }
 
+    @Test
+    public void hi4Post() throws Exception {
+        String json = "{\"head\":{\"BankNo\":\"A00\",\"BranchNo\":\"A00\",\"ExSerial\":\"\",\"FunctionId\":\"300006\",\"Channel\":\"9\",\"OperNo\":\"A00\",\"TransDate\":\"20200101\",\"TransTime\":\"190000\"},\"body\":{\"ExSerial\":\"20200119221050000646\",\"BankNo\":\"A00\",\"BranchNo\":\"A00\",\"Channel\":\"G\",\"TermNo\":\"\",\"OperNo\":\"A00chenyj\",\"AuthOper\":\"\",\"AuthPwd\":\"\",\"PrevDate\":0,\"TransDate\":20200117,\"TransTime\":221050,\"PrdType\":\"\",\"PwdFlag\":\"0\",\"TransCode\":\"100005\",\"ToHostSerial\":\"\",\"AccType\":\"0\",\"Account\":\"321\",\"Reserve\":\"\",\"Reserve1\":\"\",\"Reserve2\":\"\",\"ClientNo\":\"\",\"BankAcc\":\"321\",\"ClientType\":\"\",\"CurrType\":\"\",\"Summary\":\"\",\"Passwd\":\"\",\"ClientInfoFlag\":\" \"}}";
+        String result = feignServiceHi.hi4Post(json);
+        log.info(result);
+    }
+
+    @Test
+    public void hi5Post() throws Exception {
+        String json = "{\"head\":{\"BankNo\":\"A00\",\"BranchNo\":\"A00\",\"ExSerial\":\"\",\"FunctionId\":\"300006\",\"Channel\":\"9\",\"OperNo\":\"A00\",\"TransDate\":\"20200101\",\"TransTime\":\"190000\"},\"body\":{\"ExSerial\":\"20200119221050000646\",\"BankNo\":\"A00\",\"BranchNo\":\"A00\",\"Channel\":\"G\",\"TermNo\":\"\",\"OperNo\":\"A00chenyj\",\"AuthOper\":\"\",\"AuthPwd\":\"\",\"PrevDate\":0,\"TransDate\":20200117,\"TransTime\":221050,\"PrdType\":\"\",\"PwdFlag\":\"0\",\"TransCode\":\"100005\",\"ToHostSerial\":\"\",\"AccType\":\"0\",\"Account\":\"321\",\"Reserve\":\"\",\"Reserve1\":\"\",\"Reserve2\":\"\",\"ClientNo\":\"\",\"BankAcc\":\"321\",\"ClientType\":\"\",\"CurrType\":\"\",\"Summary\":\"\",\"Passwd\":\"\",\"ClientInfoFlag\":\" \"}}";
+        String result = feignServiceHi.hi5Post(json);
+        log.info(result);
+    }
+
 
     @Resource
     FeignServiceHi2 feignServiceHi2;

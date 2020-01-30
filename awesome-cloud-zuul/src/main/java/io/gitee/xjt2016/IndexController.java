@@ -41,14 +41,11 @@ public class IndexController {
         String url = "/api-a/hi";
         String serviceId = simpleRouteLocator.getMatchingRoute(url).getLocation();
 
-        return restTemplate.getForObject("http://" + "service-hi" + "/hi", String.class, new Supplier<Map<String, Object>>() {
-            @Override
-            public Map<String, Object> get() {
-                Map<String, Object> map = new HashMap<>();
-                map.put("name", 123);
-                return map;
-            }
-        }.get());
+        return restTemplate.getForObject("http://" + "service-hi" + "/hi", String.class, ((Supplier<Map<String, Object>>) () -> {
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", 123);
+            return map;
+        }).get());
     }
 
     public void proxy(String url, String params) {

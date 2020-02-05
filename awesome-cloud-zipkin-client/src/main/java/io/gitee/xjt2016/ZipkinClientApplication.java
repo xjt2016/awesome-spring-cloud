@@ -25,4 +25,27 @@ public class ZipkinClientApplication {
         return "hi " + name + " ,i am from port:" + port;
     }
 
+    //在提交之前，修改span信息
+//    @Bean
+//    FinishedSpanHandler handlerOne() {
+//        return new FinishedSpanHandler() {
+//            @Override
+//            public boolean handle(TraceContext traceContext, MutableSpan span) {
+//                span.name("foo");
+//                return true; // keep this span
+//            }
+//        };
+//    }
+//
+//    @Bean
+//    FinishedSpanHandler handlerTwo() {
+//        return new FinishedSpanHandler() {
+//            @Override
+//            public boolean handle(TraceContext traceContext, MutableSpan span) {
+//                span.name(span.name() + " bar");
+//                return true; // keep this span
+//            }
+//        };
+//    }
+
 }

@@ -1,0 +1,1 @@
+org.springframework.boot.env.EnvironmentPostProcessor=io.gitee.xjt2016.modules.zipkin.AutoZipkinEnvironmentPostProcessor

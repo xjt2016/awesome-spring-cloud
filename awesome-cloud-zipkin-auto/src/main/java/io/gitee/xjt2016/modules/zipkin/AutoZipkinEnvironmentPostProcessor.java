@@ -7,7 +7,14 @@ import org.springframework.core.env.PropertiesPropertySource;
 
 import java.util.Properties;
 
-
+/**
+ * AutoZipkinEnvironmentPostProcessor.
+ * 如果有多个项目需要：需要加入监控；则引入当前模块；完成了如下操作；
+ * 1. 引入了zipkin、sleuth相关jar
+ * 2. 传入了相关属性，将链路日志推送给了kafka
+ *
+ * @author xiongjinteng@gmail.com
+ */
 public class AutoZipkinEnvironmentPostProcessor implements EnvironmentPostProcessor {
 
     @Override

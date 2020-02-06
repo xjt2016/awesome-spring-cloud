@@ -3,7 +3,6 @@ package io.gitee.xjt2016;
 import org.junit.Test;
 import rx.Observable;
 import rx.Observer;
-import rx.functions.Action1;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -65,12 +64,7 @@ public class CommandHelloWorldTest {
             }
         });
 
-        ho.subscribe(new Action1<String>() {
-            @Override
-            public void call(String s) {
-                System.out.println("==================call:" + s);
-            }
-        });
+        ho.subscribe(s -> System.out.println("==================call:" + s));
         System.in.read();
     }
 

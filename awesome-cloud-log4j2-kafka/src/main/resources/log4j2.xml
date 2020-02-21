@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--monitorInterval="30"  :间隔秒数,自动检测配置文件的变更和重新配置本身-->
+<configuration status="WARN" monitorInterval="5">
+    <!--TRACE < DEBUG < INFO < WARN < ERROR < FATAL-->
+    <!--Log4j建议只使用四个级别，优先级从高到低分别是 ERROR、WARN、INFO、DEBUG-->
+    <Properties>
+        <!--%c{1.} %logger{36}-->
+        <property name="highlightPattern">%highlight{%d{HH:mm:ss:SSS} [%t] %-5level: %c{1.} - %msg%n}</property>
+        <property name="LOG_PATTERN">%d{HH:mm:ss:SSS} [%t] %-5level: %c{1.} - %msg%n</property>
+        <property name="basePath">${sys:user.home}/logs</property>
+
+        <property name="traceLogPath">${basePath}/trace/trace.log</property>
+        <property name="debugLogPath">${basePath}/debug/debug.log</property>
+        <property name="infoLogPath">${basePath}/info/info.log</property>
+        <property name="warnLogPath">${basePath}/warn/warn.log</property>
+        <property name="errorMsgPath">${basePath}/error/error.log</property>
+        <property name="fatalMsgPath">${basePath}/fatal/fatal.log</property>
+
+        <property name="rollingFileTraceLogPath">${traceLogPath}.%d{yyyy-MM-dd-HH}</property>
+        <property name="rollingFileDebugLogPath">${debugLogPath}.%d{yyyy-MM-dd-HH}</property>
+        <property name="rollingFileInfoLogPath">${infoLogPath}.%d{yyyy-MM-dd-HH}</property>
+        <property name="rollingFileWarnLogPath">${warnLogPath}.%d{yyyy-MM-dd-HH}</property>
+        <property name="rollingFileErrorLogPath">${errorMsgPath}.%d{yyyy-MM-dd-HH}</property>
+    </Properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${highlightPattern}"/>
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <RollingFile name="rollingFileTraceLog" filename="${traceLogPath}" filePattern="${rollingFileTraceLogPath}"
+                     append="true">
+            <Filters>
+                <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <!--打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+        <!-- 按月生成归档日志，可以使用 filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log" -->
+        <RollingFile name="rollingFileDebugLog" filename="${debugLogPath}" filePattern="${rollingFileDebugLogPath}"
+                     append="true">
+            <Filters>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!--TimeBasedTriggeringPolicy指定了基于时间的触发策略。-->
+                <!--SizeBasedTriggeringPolicy指定了基于文件大小的触发策略。-->
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="rollingFileInfoLog" filename="${infoLogPath}" filePattern="${rollingFileInfoLogPath}"
+                     append="true">
+            <Filters>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="rollingFileWarnLog" filename="${warnLogPath}" filePattern="${rollingFileWarnLogPath}"
+                     append="true">
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="rollingFileErrorLog" filename="${errorMsgPath}" filePattern="${rollingFileErrorLogPath}"
+                     append="true">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+        <Kafka name="Kafka" topic="KAFKA-TOPIC-LOG4J2" syncSend="false">
+            <PatternLayout pattern="%date %message"/>
+            <Property name="bootstrap.servers">192.168.51.100:9092</Property>
+        </Kafka>
+    </appenders>
+    <Loggers>
+        <!--<Logger name="org.springframework" level="WARN"/>-->
+        <!--<Logger name="org.hibernate.SQL" level="DEBUG"/>-->
+        <!--<Logger name="org.hibernate.engine.QueryParameters" level="DEBUG"/>-->
+        <!--<Logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG"/>-->
+
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="rollingFileTraceLog"/>
+            <AppenderRef ref="rollingFileDebugLog"/>
+            <AppenderRef ref="rollingFileInfoLog"/>
+            <AppenderRef ref="rollingFileWarnLog"/>
+            <AppenderRef ref="rollingFileErrorLog"/>
+        </Root>
+
+        <!--<Logger name="kafkaLog" level="trace">-->
+            <!--<AppenderRef ref="Kafka" />-->
+        <!--</Logger>-->
+    </Loggers>
+</configuration>

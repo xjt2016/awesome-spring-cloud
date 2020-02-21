@@ -8,7 +8,8 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import java.util.Collections;
 import java.util.Properties;
 
-import static io.gitee.xjt2016.modules.kafka.KafkaConstant.KAFKA_SERVER;
+import static io.gitee.xjt2016.KafkaConstant.KAFKA_SERVER;
+import static io.gitee.xjt2016.KafkaConstant.KAFKA_TOPIC_STUDY;
 
 public class MyConsumer {
     private static KafkaConsumer<String, String> consumer;
@@ -32,7 +33,7 @@ public class MyConsumer {
         properties.put("enable.auto.commit", true);
         consumer = new KafkaConsumer<>(properties);
         //指定topic
-        consumer.subscribe(Collections.singleton("kafka-study-x"));
+        consumer.subscribe(Collections.singleton(KAFKA_TOPIC_STUDY));
         try {
             while (true) {
                 boolean flag = true;
@@ -62,7 +63,7 @@ public class MyConsumer {
     private static void generalConsumeMessageSyncCommit() {
         properties.put("auto.commit.offset", false);
         consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Collections.singletonList("kafka-study-x"));
+        consumer.subscribe(Collections.singletonList(KAFKA_TOPIC_STUDY));
         while (true) {
             boolean flag = true;
             ConsumerRecords<String, String> records = consumer.poll(100);
@@ -91,7 +92,7 @@ public class MyConsumer {
     private static void generalConsumeMessageAsyncCommit() {
         properties.put("auto.commit.offset", false);
         consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Collections.singletonList("kafka-study-x"));
+        consumer.subscribe(Collections.singletonList(KAFKA_TOPIC_STUDY));
         while (true) {
             boolean flag = true;
             ConsumerRecords<String, String> records = consumer.poll(100);
@@ -116,7 +117,7 @@ public class MyConsumer {
     private static void generalConsumeMessageAsyncCommitWithCallback() {
         properties.put("auto.commit.offset", false);
         consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Collections.singletonList("kafka-study-x"));
+        consumer.subscribe(Collections.singletonList(KAFKA_TOPIC_STUDY));
         while (true) {
             boolean flag = true;
             ConsumerRecords<String, String> records = consumer.poll(100);
@@ -146,7 +147,7 @@ public class MyConsumer {
     private static void mixSyncAndAsyncCommit() {
         properties.put("auto.commit.offset", false);
         consumer = new KafkaConsumer<>(properties);
-        consumer.subscribe(Collections.singletonList("kafka-study-x"));
+        consumer.subscribe(Collections.singletonList(KAFKA_TOPIC_STUDY));
         try {
             while (true) {
                 //boolean flag = true;

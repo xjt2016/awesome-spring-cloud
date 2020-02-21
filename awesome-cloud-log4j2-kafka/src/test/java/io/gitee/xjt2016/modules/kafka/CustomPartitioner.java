@@ -2,8 +2,8 @@ package io.gitee.xjt2016.modules.kafka;
 
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;
+import org.apache.kafka.common.InvalidRecordException;
 import org.apache.kafka.common.PartitionInfo;
-import org.apache.kafka.common.record.InvalidRecordException;
 import org.apache.kafka.common.utils.Utils;
 
 import java.util.List;

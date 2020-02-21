@@ -1,13 +1,11 @@
 package io.gitee.xjt2016.modules.kafka;
 
-import org.apache.kafka.clients.producer.Callback;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.clients.producer.*;
 
 import java.util.Properties;
 
-import static io.gitee.xjt2016.modules.kafka.KafkaConstant.KAFKA_SERVER;
+import static io.gitee.xjt2016.KafkaConstant.KAFKA_SERVER;
+import static io.gitee.xjt2016.KafkaConstant.KAFKA_TOPIC_STUDY;
 
 public class MyProducer {
     private static KafkaProducer<String, String> producer;
@@ -33,14 +31,14 @@ public class MyProducer {
      */
     //发送消息，发送完后不做处理
     private static void sendMessageForgetResult() {
-        ProducerRecord<String, String> record = new ProducerRecord<>("kafka-study", "name", "ForgetResult");
+        ProducerRecord<String, String> record = new ProducerRecord<>(KAFKA_TOPIC_STUDY, "name", "ForgetResult");
         producer.send(record);
         producer.close();
     }
 
     //发送同步消息，获取发送的消息
     private static void sendMessageSync() throws Exception {
-        ProducerRecord<String, String> record = new ProducerRecord<>("kafka-study", "name", "sync");
+        ProducerRecord<String, String> record = new ProducerRecord<>(KAFKA_TOPIC_STUDY, "name", "sync");
         RecordMetadata result = producer.send(record).get();
         System.out.println(result.topic());//imooc-kafka-study
         System.out.println(result.partition());//分区为0
@@ -55,7 +53,7 @@ public class MyProducer {
      * --topic kafka-study-x --from-beginning
      */
     private static void sendMessageCallback() {
-        ProducerRecord<String, String> record = new ProducerRecord<>("kafka-study-x", "name", "callback");
+        ProducerRecord<String, String> record = new ProducerRecord<>(KAFKA_TOPIC_STUDY, "name", "callback");
         producer.send(record, new MyProducerCallback());
         //发送多条消息
         record = new ProducerRecord<>("kafka-study-x", "name-x", "callback");
@@ -80,8 +78,9 @@ public class MyProducer {
     }
 
     public static void main(String[] args) throws Exception {
-       sendMessageForgetResult();
-        //sendMessageSync();
+        //sendMessageForgetResult();
+        sendMessageSync();
         //sendMessageCallback();
+
     }
 }

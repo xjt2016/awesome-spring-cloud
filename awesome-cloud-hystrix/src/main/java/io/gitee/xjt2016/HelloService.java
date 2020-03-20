@@ -12,7 +12,7 @@ public class HelloService {
     RestTemplate restTemplate;
 
     public String hiService(String name) {
-        return restTemplate.getForObject("http://server-hi/hi?name=" + name, String.class);
+        return restTemplate.getForObject("http://awesome-cloud-eureka-client/base/hi?name=" + name, String.class);
     }
 }
 

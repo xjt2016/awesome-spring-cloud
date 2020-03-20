@@ -1,7 +1,6 @@
 package io.gitee.xjt2016;
 
 import org.springframework.cloud.netflix.zuul.filters.SimpleRouteLocator;
-import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,16 +40,11 @@ public class IndexController {
         String url = "/api-a/hi";
         String serviceId = simpleRouteLocator.getMatchingRoute(url).getLocation();
 
-        return restTemplate.getForObject("http://" + "service-hi" + "/hi", String.class, ((Supplier<Map<String, Object>>) () -> {
+        return restTemplate.getForObject("http://" + "AWESOME-CLOUD-EUREKA-CLIENT" + "/base/hi", String.class, ((Supplier<Map<String, Object>>) () -> {
             Map<String, Object> map = new HashMap<>();
-            map.put("name", 123);
+            map.put("name", "中文");
             return map;
         }).get());
-    }
-
-    public void proxy(String url, String params) {
-        Map<String, ZuulProperties.ZuulRoute> routeMap = applicationContext.getBean(ZuulProperties.class).getRoutes();
-
     }
 
 }

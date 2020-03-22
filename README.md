@@ -9,3 +9,10 @@ java -jar /Users/xjt2016/Documents/github/awesome-spring-cloud/awesome-cloud-eur
 java -jar /Users/xjt2016/Documents/github/awesome-spring-cloud/awesome-cloud-eureka-client/target/awesome-cloud-eureka-client-1.0-SNAPSHOT.jar --server.port=8763 -Xms64m -Xmx64m
 
 ```
+
+
+## git multi remote
+
+git remote add github https://github.com/xjt2016/awesome-spring-cloud.git
+
+git push -u github master

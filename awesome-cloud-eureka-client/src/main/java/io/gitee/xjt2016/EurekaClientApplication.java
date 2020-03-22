@@ -1,11 +1,11 @@
 package io.gitee.xjt2016;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.ribbon.RibbonLoadBalancerClient;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,31 +25,29 @@ public class EurekaClientApplication {
         SpringApplication.run(EurekaClientApplication.class, args);
     }
 
-    @Value("${server.port}")
-    String port;
+    @Autowired
+    Environment environment;
 
     @Resource
     ApplicationContext context;
 
-    @RequestMapping("/base/hi")
-    public Response home(@RequestParam(value = "name", defaultValue = "forezp") String name, Integer age, String alias) {
+    public String getPort() {
+        return environment.getProperty("local.server.port");
+    }
+
+    @RequestMapping("/hi")
+    public Response home(@RequestParam(value = "name", defaultValue = "forezp") String name) {
         Map<String, String> data = new HashMap<>();
-        data.put("message", "hi " + name + " ,i am from port:" + port);
+        data.put("message", "hi " + name + " ,i am from port:" + getPort());
         return new Response<>(data);
     }
 
     @ResponseBody
-    @RequestMapping(value = {"/hi"})
+    @RequestMapping(value = {"/hi2"})
     public Object hi(HttpServletRequest request, String username, String password) throws Exception {
         Map<String, Object> map = new HashMap<>();
         map.put("username", username);
         map.put("password", password);
         return map;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = {"/server"})
-    public Object server(HttpServletRequest request, String username, String password) throws Exception {
-        return context.getBean(RibbonLoadBalancerClient.class).choose("LCPT-GATEWAY-BOOTSTRAP");
     }
 }

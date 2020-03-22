@@ -1,16 +1,16 @@
 version: '2'
 services:
-  eureka:
+  eureka-server:
     build:
-      context: eureka
+      context: eureka-server
       dockerfile: Dockerfile
-    image: eureka:v1.0
-    container_name: eureka
+    image: eureka-server:v1.0
+    container_name: eureka-server
     ports:
       - "9000:9000"
     networks:
-      - dev
-    command: "java -Xmx64m -jar eureka.jar --server.port=9000"
+     - dev
+    command: "java -Xmx64m -jar eureka.jar --server.port=9000 --eureka.instance.hostname=eureka-server"
   client:
     build:
       context: client
@@ -21,9 +21,9 @@ services:
     container_name: "client"
     networks:
       - dev
-    command: "java -Xmx64m -jar client.jar --server.port=9001 --eureka.client.serviceUrl.defaultZone=http://192.168.0.103:9000/eureka/"
+    command: "java -Xmx64m -jar client.jar --server.port=9001 --eureka.client.serviceUrl.defaultZone=http://172.21.0.2:9000/eureka/"
     depends_on:
-      - eureka
+      - eureka-server
 networks:
   dev:
     driver: bridge

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: awesome-cloud-endpoint-prometheus
+server:
+  port: 8763
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.51.100:8000/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}

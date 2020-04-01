@@ -2,7 +2,7 @@ spring:
   application:
     name: awesome-cloud-eureka-server
 server:
-  port: 8761
+  port: 8000
 
 eureka:
   instance:

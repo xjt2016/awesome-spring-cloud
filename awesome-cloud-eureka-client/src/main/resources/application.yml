@@ -5,7 +5,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.190.166/eureka/
+      defaultZone: http://192.168.51.100:8000/eureka/
     registry-fetch-interval-seconds: 2
   instance:
     prefer-ip-address: true
@@ -21,3 +21,5 @@ management:
 logging:
   level:
     root: debug
+server:
+  port: 8082

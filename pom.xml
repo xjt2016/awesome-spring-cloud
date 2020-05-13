@@ -20,6 +20,7 @@
         <module>awesome-cloud-zipkin-auto</module>
         <module>awesome-cloud-log4j2-kafka</module>
         <module>awesome-cloud-endpoint-prometheus</module>
+        <module>awesome-cloud-stress</module>
     </modules>
 
     <name>awesome-spring-cloud</name>
